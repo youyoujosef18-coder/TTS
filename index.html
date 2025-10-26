@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Infinity Accounts - Premium TikTok Growth Accounts</title>
+    
+    <!-- TikTok Pixel Code -->
+    <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+      
+      ttq.load('D3UMIM3C77U93U3TAGCG');
+      ttq.page();
+    }(window, document, 'ttq');
+    </script>
+    <!-- End TikTok Pixel Code -->
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -377,10 +389,10 @@
                 <p>Hello everyone 👋 I'm Joe, the founder of Infinity Accounts. Welcome to our official site! It all starts by making the account buying process as simple as possible. Many of your questions are probably answered here already.</p>
                 
                 <div class="btn-container">
-                    <a href="https://discord.gg/SURawHfQjW" class="btn btn-discord pulse">
+                    <a href="https://discord.gg/SURawHfQjW" class="btn btn-discord pulse" onclick="ttq.track('ClickButton', {content_id: 'discord_join', content_type: 'social'});">
                         <i class="fab fa-discord"></i> BUY HERE Discord
                     </a>
-                    <a href="https://wa.me/213674255603" class="btn btn-whatsapp pulse">
+                    <a href="https://wa.me/213674255603" class="btn btn-whatsapp pulse" onclick="ttq.track('Contact', {content_category: 'whatsapp', content_type: 'messaging'});">
                         <i class="fab fa-whatsapp"></i> WhatsApp
                     </a>
                 </div>
@@ -401,7 +413,8 @@
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen
-                        style="border-radius: 20px;">
+                        style="border-radius: 20px;"
+                        onload="ttq.track('ViewContent', {content_type: 'video', content_id: 'success_story'});">
                     </iframe>
                 </div>
                 
@@ -548,10 +561,10 @@
                 <p>Join hundreds of successful TikTok sellers who trust Infinity Accounts for their growth needs.</p>
                 
                 <div class="btn-container">
-                    <a href="https://discord.gg/SURawHfQjW" class="btn btn-discord pulse">
+                    <a href="https://discord.gg/SURawHfQjW" class="btn btn-discord pulse" onclick="ttq.track('ClickButton', {content_id: 'discord_final', content_type: 'conversion'});">
                         <i class="fab fa-discord"></i> Join Our Discord
                     </a>
-                    <a href="https://wa.me/213674255603" class="btn btn-whatsapp pulse">
+                    <a href="https://wa.me/213674255603" class="btn btn-whatsapp pulse" onclick="ttq.track('Contact', {content_category: 'whatsapp_final', content_type: 'lead'});">
                         <i class="fab fa-whatsapp"></i> Message on WhatsApp
                     </a>
                 </div>
@@ -560,10 +573,10 @@
     </div>
 
     <div class="floating-icons">
-        <a href="https://discord.gg/SURawHfQjW" class="floating-btn btn-discord">
+        <a href="https://discord.gg/SURawHfQjW" class="floating-btn btn-discord" onclick="ttq.track('ClickButton', {content_id: 'floating_discord'});">
             <i class="fab fa-discord"></i>
         </a>
-        <a href="https://wa.me/213674255603" class="floating-btn btn-whatsapp">
+        <a href="https://wa.me/213674255603" class="floating-btn btn-whatsapp" onclick="ttq.track('Contact', {content_category: 'floating_whatsapp'});">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>
