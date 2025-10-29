@@ -389,10 +389,10 @@
                 <p>Hello everyone 👋 I'm Joe, the founder of Infinity Accounts. Welcome to our official site! It all starts by making the account buying process as simple as possible. Many of your questions are probably answered here already.</p>
                 
                 <div class="btn-container">
-                    <a href="https://discord.gg/SURawHfQjW" class="btn btn-discord pulse" onclick="ttq.track('ClickButton', {content_id: 'discord_join', content_type: 'social'});">
+                    <a href="https://discord.gg/SURawHfQjW" class="btn btn-discord pulse" onclick="ttq.track('ClickButton', {content_id: 'discord_join', content_type: 'product'});">
                         <i class="fab fa-discord"></i> BUY HERE Discord
                     </a>
-                    <a href="https://wa.me/213674255603" class="btn btn-whatsapp pulse" onclick="ttq.track('Contact', {content_category: 'whatsapp', content_type: 'messaging'});">
+                    <a href="https://wa.me/213674255603" class="btn btn-whatsapp pulse" onclick="ttq.track('Contact', {content_id: 'whatsapp_contact', content_type: 'product'});">
                         <i class="fab fa-whatsapp"></i> WhatsApp
                     </a>
                 </div>
@@ -414,7 +414,7 @@
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen
                         style="border-radius: 20px;"
-                        onload="ttq.track('ViewContent', {content_type: 'video', content_id: 'success_story'});">
+                        id="successVideo">
                     </iframe>
                 </div>
                 
@@ -561,10 +561,10 @@
                 <p>Join hundreds of successful TikTok sellers who trust Infinity Accounts for their growth needs.</p>
                 
                 <div class="btn-container">
-                    <a href="https://discord.gg/SURawHfQjW" class="btn btn-discord pulse" onclick="ttq.track('ClickButton', {content_id: 'discord_final', content_type: 'conversion'});">
+                    <a href="https://discord.gg/SURawHfQjW" class="btn btn-discord pulse" onclick="ttq.track('ClickButton', {content_id: 'discord_final', content_type: 'product'});">
                         <i class="fab fa-discord"></i> Join Our Discord
                     </a>
-                    <a href="https://wa.me/213674255603" class="btn btn-whatsapp pulse" onclick="ttq.track('Contact', {content_category: 'whatsapp_final', content_type: 'lead'});">
+                    <a href="https://wa.me/213674255603" class="btn btn-whatsapp pulse" onclick="ttq.track('Contact', {content_id: 'whatsapp_final', content_type: 'product'});">
                         <i class="fab fa-whatsapp"></i> Message on WhatsApp
                     </a>
                 </div>
@@ -573,10 +573,10 @@
     </div>
 
     <div class="floating-icons">
-        <a href="https://discord.gg/SURawHfQjW" class="floating-btn btn-discord" onclick="ttq.track('ClickButton', {content_id: 'floating_discord'});">
+        <a href="https://discord.gg/SURawHfQjW" class="floating-btn btn-discord" onclick="ttq.track('ClickButton', {content_id: 'floating_discord', content_type: 'product'});">
             <i class="fab fa-discord"></i>
         </a>
-        <a href="https://wa.me/213674255603" class="floating-btn btn-whatsapp" onclick="ttq.track('Contact', {content_category: 'floating_whatsapp'});">
+        <a href="https://wa.me/213674255603" class="floating-btn btn-whatsapp" onclick="ttq.track('Contact', {content_id: 'floating_whatsapp', content_type: 'product'});">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>
@@ -594,6 +594,7 @@
             const buttons = document.querySelectorAll('.btn, .floating-btn');
             const clickSound = document.getElementById('clickSound');
             const videoPlaceholder = document.getElementById('videoPlaceholder');
+            const successVideo = document.getElementById('successVideo');
             
             buttons.forEach(button => {
                 button.addEventListener('click', function() {
@@ -611,6 +612,17 @@
                 });
             }
             
+            // Track video view when video starts playing
+            if (successVideo) {
+                successVideo.addEventListener('play', function() {
+                    ttq.track('ViewContent', {
+                        content_id: 'success_story',
+                        content_type: 'product',
+                        content_name: 'Success Story Video'
+                    });
+                });
+            }
+            
             // Add some animation to the TikTok icons in background
             const bg = document.querySelector('.tiktok-bg');
             let position = 0;
@@ -619,6 +631,32 @@
                 position += 0.5;
                 bg.style.backgroundPosition = `${position}px ${position}px`;
             }, 100);
+            
+            // Track page view for specific sections when they come into view
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const sectionId = entry.target.id || entry.target.className;
+                        ttq.track('ViewContent', {
+                            content_id: sectionId,
+                            content_type: 'product',
+                            content_name: sectionId.replace('-', ' ')
+                        });
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe main sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
         });
     </script>
 </body>
